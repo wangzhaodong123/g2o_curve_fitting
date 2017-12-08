@@ -145,7 +145,8 @@ int main( int argc, char** argv )
   
   //g2o求解器的建立
   //矩阵块，优化变量维度为3，误差项维度为2
-  typedef BlockSolver< BlockSolverTraits<3,2> > blocksolver;
+  //一直没搞明白这里的BlockSolverTraits维度的意思，后来索性直接用动态了
+  typedef BlockSolver< BlockSolverTraits<Eigen::Dynamic, Eigen::Dynamic> > blocksolver;
   //求解器类型为稠密性
   blocksolver::LinearSolverType* linearsolver = new LinearSolverDense<blocksolver::PoseMatrixType> ();
   //矩阵求解器指针
